@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/crates/tauri-cli/schema.json",
+  "productName": "SoundCloud",
+  "version": "1.0.0",
+  "identifier": "com.soundcloud.desktop",
+  "build": {
+    "frontendDist": "../frontend"
+  },
+  "app": {
+    "windows": []
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "app"],
+    "publisher": "Wartied inc.",
+    "icon": [
+      "icons/icon.ico",
+      "icons/icon.png"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Rust
+src-tauri/target/
+
+# Frontend
+frontend/node_modules/
+
+# WebView2 data
+src-tauri/WixTools/
+src-tauri/gen/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
