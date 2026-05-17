@@ -37,7 +37,7 @@ All software provided is Public Domain.
 
 The original creator ([@wartied](https://github.com/wartied)) assumes no responsibility for damages, bugs, security vulnerabilities, or legal issues that may arise from using their code. Use it how you please entirely at your own risk.
 
-The original creator ([@wartied](https://github.com/wartied)) does not claim any overship over the Soundcloud Inc or Soundcloud Global Limited & Co. KG assests or their proprietary software.
+The original creator ([@wartied](https://github.com/wartied)) does not claim any overship over the Soundcloud Inc. or Soundcloud Global Limited & Co. KG assests or their proprietary software.
 
 #
 
