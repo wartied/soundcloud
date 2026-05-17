@@ -41,6 +41,7 @@ pub fn run() {
     let adblock_js = adblock::get_adblock_script();
     let scraper_js = adblock::get_track_scraper_js();
     let zoom_js = adblock::get_zoom_js();
+    let zoom_poll_js = adblock::get_zoom_poll_js();
 
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
@@ -78,6 +79,7 @@ pub fn run() {
 
             let ds = app.state::<discord::DiscordState>().inner().clone();
             let wv = webview.clone();
+            let wv_zoom = webview.clone();
             std::thread::spawn(move || loop {
                 std::thread::sleep(Duration::from_millis(500));
                 let ds2 = ds.clone();
@@ -86,6 +88,12 @@ pub fn run() {
                         if !data.title.is_empty() {
                             ds2.update(data.into_info());
                         }
+                    }
+                });
+                let wvz = wv_zoom.clone();
+                let _ = wv_zoom.eval_with_callback(zoom_poll_js, move |result| {
+                    if let Ok(factor) = result.parse::<f64>() {
+                        let _ = wvz.set_zoom(factor);
                     }
                 });
             });

@@ -172,8 +172,8 @@ pub fn get_zoom_js() -> &'static str {
     if (idx < 0) idx = L.indexOf(100);
 
     function apply() {
-        document.documentElement.style.zoom = (L[idx] / 100);
         localStorage.setItem('__sc_zoom', L[idx]);
+        window.__scPendingZoom = L[idx] / 100;
     }
     if (L[idx] !== 100) apply();
 
@@ -198,5 +198,13 @@ pub fn get_zoom_js() -> &'static str {
         if (e.deltaY < 0 && idx < L.length - 1) { idx++; apply(); }
         else if (e.deltaY > 0 && idx > 0) { idx--; apply(); }
     }, { passive: false });
+})()"#
+}
+
+pub fn get_zoom_poll_js() -> &'static str {
+    r#"(function() {
+    var z = window.__scPendingZoom;
+    if (z) { window.__scPendingZoom = null; return z; }
+    return null;
 })()"#
 }
